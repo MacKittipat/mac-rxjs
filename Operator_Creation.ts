@@ -13,11 +13,12 @@ resultOf.subscribe(x => console.log('Of = ' + x));
 const resultRange = range(1, 3);
 resultRange.subscribe(x => console.log('Range = ' + x));
 
+let end = 2;
 // Creates the Observable lazily, that is, only when it is subscribed.
 const resultDefer = defer(() => {
-    // Capture date time at the moment of subscription
-    // New random number is generate at the moment of subscription
-    return of(new Date(), Math.random());
+    // Capture value at the moment of subscription
+    return range(1, end)
 });
 resultDefer.subscribe(x => console.log('Defer1 = ' + x));
+end = 3;
 resultDefer.subscribe(x => console.log('Defer2 = ' + x));
